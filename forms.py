@@ -1,7 +1,12 @@
 from django import forms
-from .models import Item
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.db import models
+from django.forms import fields
 
-class ItemForm(forms.ModelForm):
+class RegisterForm(UserCreationForm):
+    email = forms.EmailField()
     class Meta:
-        model = Item
-        fields = ['item_name','item_desc','item_price','item_image']
+        model = User
+        fields = ['username','email','password1','password2']
+        
